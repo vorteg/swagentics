@@ -1,0 +1,6 @@
+active_worktrees = []
+
+[_meta]
+description = "Radar de worktrees activos. El dispatcher lee esto en STEP 1 para evitar colisiones."
+last_updated = ""
+schema_version = "1.0.0"

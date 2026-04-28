@@ -1,0 +1,20 @@
+framework = "swagentics"
+version = "2.0.0-alpha.1"
+description = "Framework-managed files. upgrade.sh respects the project_profile to avoid noise."
+project_profile = ""
+
+[runtime]
+python_runner = ""
+package_manager = ""
+script_prefix = ""
+
+[mcp_status]
+context7 = false
+searxng = false
+last_checked = ""
+
+managed_files = ["copilot-instructions.md", ".gitignore", ".copilot-dev.tson", "hooks/sync-on-stop.tson", "hooks/scripts/sync_agents.sh", "hooks/scripts/upgrade.sh", "hooks/scripts/generate_repo_index.py", "hooks/scripts/generate_skill_registry.py", "hooks/scripts/generate_copilot_runtime.py", "hooks/scripts/blueprint.py", "hooks/scripts/discovery.py", "hooks/scripts/generate_atlas.py", "hooks/scripts/tson_utils.py", "hooks/scripts/commit_memory.py", "agents/assets/atlas.tson", "agents/dispatcher.agent.md", "agents/tech-lead.agent.md", "agents/explorer.agent.md", "agents/framework-admin.agent.md", "agents/qa.agent.md", "agents/appsec.agent.md", "agents/devops.agent.md", "prompts/copilot-init.prompt.md", "prompts/copilot-upgrade.prompt.md", "skills/architecture-patterns/SKILL.md", "skills/context-handoff/SKILL.md", "skills/system-audit/SKILL.md", "memory/.gitkeep", "memory/schemas/active_state.schema.tson", "memory/templates/active_state.template.tson", "memory/templates/local_dispatcher_state.template.tson"]
+deprecated_files = ["agents/appsec.md", "agents/coder.md", "agents/devops.md", "agents/dispatcher.md", "agents/qa.md", "agents/tech-lead.md", "agents/ux-lead.md", "agents/frontend-coder.md", "agents/backend-coder.md", "agents/htmx-prototyper.md", "agents/ux-lead.agent.md", "agents/backend-coder.agent.md", "agents/frontend-coder.agent.md", "agents/htmx-prototyper.agent.md", "hooks/scripts/sync_agents.mjs", "hooks/scripts/generate_repo_index.mjs", "hooks/scripts/generate_skill_registry.mjs", "hooks/scripts/generate_copilot_runtime.mjs", "hooks/scripts/discovery.mjs", "instructions/design.instructions.md", "instructions/python.instructions.md", "instructions/react.instructions.md", "instructions/typescript.instructions.md", "framework_presentation_summary.md"]
+
+[optional_agents]
+# Empty — users add their own agents via /copilot-init

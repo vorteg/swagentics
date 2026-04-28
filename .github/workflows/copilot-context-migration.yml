@@ -1,0 +1,64 @@
+name: Actualizar Índices de Agentes AI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      # Disparadores de infraestructura AI
+      - '.github/hooks/scripts/**'
+      - '.github/agents/**'
+      - '.github/skills/**'
+      - '.github/instructions/**'
+      
+      # ──────────────────────────────────────────────────────────
+      # CUANDO COPIES ESTE WORKFLOW A UN REPO HOST:
+      # Agrega aquí las carpetas de código fuente de tu proyecto.
+      # Esto regenera los repo maps cuando tu código cambia.
+      # Ejemplos:
+      #   - 'src/**'
+      #   - 'app/**'
+      #   - 'packages/**'
+      #   - 'tests/**'
+      # ──────────────────────────────────────────────────────────
+
+jobs:
+  update-agent-indexes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: ⚡ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🗺️ 1. Generar Mapas de Código Dinámicos (Repo Maps)
+        run: |
+          for agent_file in .github/agents/*.agent.md; do
+            role_name=$(basename "$agent_file" .agent.md)
+            echo "🔍 Generando mapa de repositorio para: $role_name"
+            node .github/hooks/scripts/generate_repo_index.mjs --role "$role_name"
+          done
+
+      - name: 🧠 2. Generar Registro Dinámico de Skills
+        run: |
+          node .github/hooks/scripts/generate_skill_registry.mjs
+
+      # NOTE: generate_copilot_runtime requiere la extensión Copilot Chat
+      # instalada localmente. En CI no está disponible — ejecutar solo en local
+      # con: node .github/hooks/scripts/generate_copilot_runtime.mjs
+
+      - name: 🚀 Commit y Push de los assets actualizados
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add .github/agents/assets/
+          
+          git diff --quiet && git diff --staged --quiet || \
+          (git commit -m "chore(ai): 🤖 actualiza mapas dinámicos y enrutamiento de skills" && git push)

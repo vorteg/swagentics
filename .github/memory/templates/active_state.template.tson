@@ -1,0 +1,17 @@
+pipeline = []
+
+[_meta]
+schema_version = "1.0.0"
+last_updated = ""
+
+
+[execution]
+mode = 3
+current_agent = "@dispatcher"
+status = "pending"
+recommended_model = ""
+
+
+[context]
+current_blockers = []
+recent_files_modified = []

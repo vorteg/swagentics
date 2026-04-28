@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server"],
+      "env": {
+        "CONTEXT7_API_KEY": "your_api_key_here"
+      }
+    },
+    "searxng": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-searxng"],
+      "env": {
+        "SEARXNG_URL": "http://localhost:8080"
+      }
+    }
+  }
+}

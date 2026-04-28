@@ -1,0 +1,6 @@
+[framework]
+name = "Swagentics"
+version = "2.0.0-alpha.1"
+codename = "Genesis"
+last_major_update = "2026-04-28"
+features = ["Discovery System (Atlas)", "Zero-Hallucination Evidence Protocol", "Unified Python-based Sync", "Context-Isolated Subagents", "Mode 3 Worktree Persistence", "Dynamic Runtime Detection", "MCP Health Check", "Explorer Agent (Read-Only)", "Mode-Agnostic State Management"]

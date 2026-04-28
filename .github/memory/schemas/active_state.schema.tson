@@ -1,0 +1,92 @@
+$schema = "http://json-schema.org/draft-07/schema#"
+title = "Active State"
+description = "Cross-session state carrier for Mode 3 worktree handoffs. Agents MUST follow this schema \u2014 no freeform narrative."
+type = "object"
+additionalProperties = false
+required = ["_meta", "execution", "pipeline"]
+
+[properties]
+[properties._meta]
+type = "object"
+required = ["schema_version", "last_updated"]
+
+[properties._meta.properties]
+[properties._meta.properties.schema_version]
+type = "string"
+const = "1.0.0"
+
+
+[properties._meta.properties.last_updated]
+format = "date-time"
+type = ["string", "null"]
+
+
+[properties.execution]
+type = "object"
+required = ["mode", "current_agent", "status"]
+
+[properties.execution.properties]
+[properties.execution.properties.mode]
+type = "integer"
+enum = [1, 2, 3]
+
+
+[properties.execution.properties.current_agent]
+type = "string"
+pattern = "^@"
+
+
+[properties.execution.properties.status]
+type = "string"
+enum = ["pending", "in_progress", "blocked", "done"]
+
+
+[properties.execution.properties.recommended_model]
+type = ["string", "null"]
+
+
+[properties.pipeline]
+type = "array"
+
+[properties.pipeline.items]
+type = "object"
+required = ["agent", "task", "status"]
+
+[properties.pipeline.items.properties]
+[properties.pipeline.items.properties.agent]
+type = "string"
+
+
+[properties.pipeline.items.properties.task]
+type = "string"
+maxLength = 200
+
+
+[properties.pipeline.items.properties.status]
+type = "string"
+enum = ["pending", "in_progress", "done", "skipped"]
+
+
+[properties.pipeline.items.properties.summary]
+maxLength = 500
+type = ["string", "null"]
+
+
+[properties.context]
+type = "object"
+description = "CURRENT state context only. Historical activity MUST be appended to .github/memory/activity_log.md instead of bloating this file."
+
+[properties.context.properties]
+[properties.context.properties.current_blockers]
+type = "array"
+
+[properties.context.properties.current_blockers.items]
+type = "string"
+maxLength = 200
+
+[properties.context.properties.recent_files_modified]
+type = "array"
+description = "Keep max 5 files here. Move older to activity_log.md"
+
+[properties.context.properties.recent_files_modified.items]
+type = "string"

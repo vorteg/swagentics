@@ -1,0 +1,279 @@
+[_meta]
+description = "Dynamic registry of GitHub Copilot Chat runtime capabilities. AUTO-GENERATED from extension package.tson \u2014 do not edit manually."
+generated_at = "2026-04-28T16:50:20.675175+00:00"
+source_extension = "github.copilot-chat-0.45.1"
+extension_version = "0.45.1"
+update_command = "uv run .github/hooks/scripts/generate_copilot_runtime.py"
+
+
+[slash_commands_by_mode]
+[[slash_commands_by_mode.ask_mode]]
+command = "/explain"
+description = "Explain how the code in your active editor works"
+available_when = "always"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/review"
+description = "Review the selected code in your active editor"
+available_when = "github.copilot.advanced.review.intent"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/tests"
+description = "Generate unit tests for the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/fix"
+description = "Propose a fix for the problems in the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/new"
+description = "Scaffold code for a new file or project in a workspace"
+available_when = "always"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/newNotebook"
+description = "Create a new Jupyter Notebook"
+available_when = "always"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/semanticSearch"
+description = "Find relevant code to your query"
+available_when = "config.github.copilot.semanticSearch.enabled"
+
+
+[[slash_commands_by_mode.ask_mode]]
+command = "/setupTests"
+description = "Set up tests in your project (Experimental)"
+available_when = "config.github.copilot.chat.setupTests.enabled"
+
+
+[[slash_commands_by_mode.inline_editor]]
+command = "/generate"
+description = "Generate new code"
+available_when = "!config.inlineChat.enableV2"
+
+
+[[slash_commands_by_mode.inline_editor]]
+command = "/edit"
+description = "Edit the selected code in your active editor"
+available_when = "!config.inlineChat.enableV2"
+
+
+[[slash_commands_by_mode.inline_editor]]
+command = "/doc"
+description = "Add documentation comment for this symbol"
+available_when = "!config.inlineChat.enableV2"
+
+
+[[slash_commands_by_mode.inline_editor]]
+command = "/fix"
+description = "Propose a fix for the problems in the selected code"
+available_when = "!config.inlineChat.enableV2"
+
+
+[[slash_commands_by_mode.inline_editor]]
+command = "/tests"
+description = "Generate unit tests for the selected code"
+available_when = "!config.inlineChat.enableV2"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/compact"
+description = "Free up context by compacting the conversation history. Optionally include extra instructions for compaction."
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/chronicle"
+description = "Session history tools and insights"
+available_when = "github.copilot.sessionSearch.enabled"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/chronicle:standup"
+description = "Generate a standup report from recent coding sessions"
+available_when = "github.copilot.sessionSearch.enabled"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/chronicle:tips"
+description = "Get personalized tips based on your Copilot usage patterns"
+available_when = "github.copilot.sessionSearch.enabled"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/explain"
+description = "Explain how the code in your active editor works"
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/review"
+description = "Review the selected code in your active editor"
+available_when = "github.copilot.advanced.review.intent"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/tests"
+description = "Generate unit tests for the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/fix"
+description = "Propose a fix for the problems in the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/new"
+description = "Scaffold code for a new file or project in a workspace"
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/newNotebook"
+description = "Create a new Jupyter Notebook"
+available_when = "always"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/semanticSearch"
+description = "Find relevant code to your query"
+available_when = "config.github.copilot.semanticSearch.enabled"
+
+
+[[slash_commands_by_mode.agent_mode]]
+command = "/setupTests"
+description = "Set up tests in your project (Experimental)"
+available_when = "config.github.copilot.chat.setupTests.enabled"
+
+
+[[slash_commands_by_mode.notebook]]
+command = "/fix"
+description = "Propose a fix for the problems in the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.notebook]]
+command = "/explain"
+description = "Explain how the code in your active editor works"
+available_when = "always"
+
+
+[[slash_commands_by_mode.notebook]]
+command = "/fix"
+description = "Propose a fix for the problems in the selected code"
+available_when = "always"
+
+
+[[slash_commands_by_mode.notebook]]
+command = "/explain"
+description = "Explain how the code in your active editor works"
+available_when = "always"
+
+
+[[slash_commands_by_mode.panel]]
+command = "/search"
+description = "Generate query parameters for workspace search"
+available_when = "always"
+
+
+[[slash_commands_by_mode.panel]]
+command = "/explain"
+description = "Explain something in the terminal"
+available_when = "always"
+
+
+[[slash_commands_by_mode.terminal]]
+command = "/explain"
+description = "Explain something in the terminal"
+available_when = "always"
+
+
+[execution_modes]
+_note = "Used by @dispatcher to recommend the optimal workflow strategy before acting."
+
+[execution_modes.mode_1_subagent_pipeline]
+label = "Subagent Pipeline (Sequential or Parallel)"
+context_strategy = "subagent isolation \u2014 each agent runs in its own encapsulated context"
+git_isolation = false
+agents_flow = "Sequential: @tech-lead \u2192 @coder | Parallel: @backend-coder AND @frontend-coder simultaneously"
+best_model_profile = "balanced"
+use_when = ["Tasks can be broken down into sub-tasks for different roles", "Subagents can run in PARALLEL if independent, or SEQUENTIAL if dependent", "No risk of branch dependency collision", "Bounded scope (single feature, single concern)"]
+
+
+[execution_modes.mode_2_compact_session]
+label = "Compact Session"
+context_strategy = "/compact within same session"
+git_isolation = false
+agents_flow = "@[single_agent] \u2192 /compact as needed \u2192 delivers"
+best_model_profile = "fast_iterative"
+use_when = ["Single agent handles the full task", "Highly iterative work (many rounds expected)", "Context continuity matters throughout", "No agent handoff needed"]
+
+
+[execution_modes.mode_3_parallel_worktrees]
+label = "Parallel Worktrees"
+context_strategy = "separate session per worktree, state persisted in active_state.tson (committed to branch)"
+git_isolation = true
+agents_flow = "Worktree A: @tech-lead \u2192 @coder \u2192 @appsec (parallel with Worktree B)"
+best_model_profile = "powerful_reasoning"
+use_when = ["Multiple independent features run simultaneously", "Risk of branch dependency collision", "Team parallelism required", "Clean branch isolation needed before PR"]
+
+
+[available_models]
+_note = "Manually maintained. Update when GitHub Copilot adds/removes models."
+_update_hint = "Check available models in VS Code: open Copilot Chat \u2192 click model selector dropdown."
+
+[[available_models.models]]
+id = "gpt-4o"
+label = "GPT-4o"
+profile = "balanced"
+context_window = "128k"
+speed = "fast"
+best_for = ["general coding", "sequential pipeline", "code review", "refactors"]
+
+
+[[available_models.models]]
+id = "claude-3.7-sonnet"
+label = "Claude 3.7 Sonnet"
+profile = "powerful_reasoning"
+context_window = "200k"
+speed = "moderate"
+best_for = ["complex architecture", "multi-file refactors", "security audits", "parallel worktrees", "long reasoning chains"]
+
+
+[[available_models.models]]
+id = "o3-mini"
+label = "o3-mini"
+profile = "analytical"
+context_window = "128k"
+speed = "moderate"
+best_for = ["algorithmic problems", "debugging complex logic", "performance analysis"]
+
+
+[[available_models.models]]
+id = "gemini-2.0-flash"
+label = "Gemini 2.0 Flash"
+profile = "fast_iterative"
+context_window = "1M"
+speed = "very_fast"
+best_for = ["quick iterations", "compact sessions", "short tasks", "scaffolding", "boilerplate"]
+
+
+[context_strategies]
+[context_strategies.compact]
+command = "/compact"
+how = "Type /compact in the current chat session."
+effect = "Compresses chat history into a summary. Context is PRESERVED but condensed."
+source = "Extension-defined (auto-detected from package.tson)"
+use_when = ["Mode 2: continuing with the SAME agent role in a long session.", "The session history is too long but the agent still needs it.", "Token limit pressure within a single agent session."]
+available_in_modes = ["agent_mode"]

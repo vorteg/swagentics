@@ -1,0 +1,256 @@
+[_meta]
+role = "framework-admin"
+description = "File index for framework-admin. Use these paths for navigation."
+last_updated = "2026-04-28T16:50:20.369217+00:00"
+
+
+[[framework_scripts]]
+file = "sync_agents.sh"
+path = ".github/hooks/scripts/sync_agents.sh"
+extension = ".sh"
+
+
+[[framework_scripts]]
+file = "generate_skill_registry.py"
+path = ".github/hooks/scripts/generate_skill_registry.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "discovery.py"
+path = ".github/hooks/scripts/discovery.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "blueprint.py"
+path = ".github/hooks/scripts/blueprint.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "commit_memory.py"
+path = ".github/hooks/scripts/commit_memory.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "generate_copilot_runtime.py"
+path = ".github/hooks/scripts/generate_copilot_runtime.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "upgrade.sh"
+path = ".github/hooks/scripts/upgrade.sh"
+extension = ".sh"
+
+
+[[framework_scripts]]
+file = "generate_repo_index.py"
+path = ".github/hooks/scripts/generate_repo_index.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "tson_utils.py"
+path = ".github/hooks/scripts/tson_utils.py"
+extension = ".py"
+
+
+[[framework_scripts]]
+file = "generate_atlas.py"
+path = ".github/hooks/scripts/generate_atlas.py"
+extension = ".py"
+
+
+[[framework_agents]]
+file = "appsec.agent.md"
+path = ".github/agents/appsec.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "devops.agent.md"
+path = ".github/agents/devops.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "framework-admin.agent.md"
+path = ".github/agents/framework-admin.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "tech-lead.agent.md"
+path = ".github/agents/tech-lead.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "dispatcher.agent.md"
+path = ".github/agents/dispatcher.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "explorer.agent.md"
+path = ".github/agents/explorer.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "qa.agent.md"
+path = ".github/agents/qa.agent.md"
+extension = ".md"
+
+
+[[framework_agents]]
+file = "explorer_index.tson"
+path = ".github/agents/assets/explorer_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "qa_skills.tson"
+path = ".github/agents/assets/qa_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "dispatcher_index.tson"
+path = ".github/agents/assets/dispatcher_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "htmx-prototyper_skills.tson"
+path = ".github/agents/assets/htmx-prototyper_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "framework-admin_skills.tson"
+path = ".github/agents/assets/framework-admin_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "frontend-coder_index.tson"
+path = ".github/agents/assets/frontend-coder_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "frontend-coder_skills.tson"
+path = ".github/agents/assets/frontend-coder_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "tech-lead_index.tson"
+path = ".github/agents/assets/tech-lead_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "tech-lead_skills.tson"
+path = ".github/agents/assets/tech-lead_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "framework-admin_index.tson"
+path = ".github/agents/assets/framework-admin_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "atlas.tson"
+path = ".github/agents/assets/atlas.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "copilot_runtime.tson"
+path = ".github/agents/assets/copilot_runtime.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "dispatcher_skills.tson"
+path = ".github/agents/assets/dispatcher_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "htmx-prototyper_index.tson"
+path = ".github/agents/assets/htmx-prototyper_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "qa_index.tson"
+path = ".github/agents/assets/qa_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "ux-lead_skills.tson"
+path = ".github/agents/assets/ux-lead_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "ux-lead_index.tson"
+path = ".github/agents/assets/ux-lead_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "backend-coder_skills.tson"
+path = ".github/agents/assets/backend-coder_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "devops_index.tson"
+path = ".github/agents/assets/devops_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "appsec_skills.tson"
+path = ".github/agents/assets/appsec_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "appsec_index.tson"
+path = ".github/agents/assets/appsec_index.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "devops_skills.tson"
+path = ".github/agents/assets/devops_skills.tson"
+extension = ".tson"
+
+
+[[framework_agents]]
+file = "backend-coder_index.tson"
+path = ".github/agents/assets/backend-coder_index.tson"
+extension = ".tson"
+
+
+[[framework_manifest]]
+file = ".copilot-dev.tson"
+path = ".github/.copilot-dev.tson"
+extension = ".tson"
+
+
+[[framework_manifest]]
+file = "framework-version.tson"
+path = ".github/framework-version.tson"
+extension = ".tson"

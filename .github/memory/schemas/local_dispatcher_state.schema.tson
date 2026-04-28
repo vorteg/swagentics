@@ -1,0 +1,43 @@
+$schema = "http://json-schema.org/draft-07/schema#"
+title = "Local Dispatcher State"
+description = "Radar tracker for active worktrees across the project."
+type = "object"
+additionalProperties = false
+required = ["_meta", "active_worktrees"]
+
+[properties]
+[properties._meta]
+type = "object"
+required = ["schema_version", "last_updated", "description"]
+
+[properties._meta.properties]
+[properties._meta.properties.schema_version]
+type = "string"
+const = "1.0.0"
+
+[properties._meta.properties.description]
+type = "string"
+
+[properties._meta.properties.last_updated]
+format = "date-time"
+type = ["string", "null"]
+
+[properties.active_worktrees]
+type = "array"
+
+[properties.active_worktrees.items]
+type = "object"
+required = ["branch", "status"]
+
+[properties.active_worktrees.items.properties]
+[properties.active_worktrees.items.properties.branch]
+type = "string"
+description = "The git worktree branch name"
+
+[properties.active_worktrees.items.properties.status]
+type = "string"
+enum = ["in_progress", "blocked", "review", "completed"]
+
+[properties.active_worktrees.items.properties.assigned_agents]
+type = "array"
+items = { type = "string" }

@@ -1,0 +1,36 @@
+# === Swagentics Framework ===
+# Local-only dispatcher state (machine-specific, not shared)
+.github/memory/local_dispatcher_state.tson
+
+# === OS & Editor ===
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/mcp.json
+.vscode/settings.json
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# === Node (for users who add Node-based projects) ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*

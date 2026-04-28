@@ -1,0 +1,112 @@
+[_meta]
+role = "explorer"
+description = "File index for explorer. Use these paths for navigation."
+last_updated = "2026-04-28T16:50:20.292500+00:00"
+
+
+[[documentation]]
+file = "README.md"
+path = "README.md"
+extension = ".md"
+
+
+[[documentation]]
+file = "CHANGELOG.md"
+path = "CHANGELOG.md"
+extension = ".md"
+
+
+[[documentation]]
+file = "README.md"
+path = ".github/README.md"
+extension = ".md"
+
+
+[[documentation]]
+file = "CHANGELOG.md"
+path = ".github/CHANGELOG.md"
+extension = ".md"
+
+
+[[documentation]]
+file = "mcp-requirements.md"
+path = "docs/mcp-requirements.md"
+extension = ".md"
+
+
+[[source_code]]
+file = "appsec.agent.md"
+path = ".github/agents/appsec.agent.md"
+extension = ".md"
+
+
+[[source_code]]
+file = "appsec_skills.tson"
+path = ".github/agents/assets/appsec_skills.tson"
+extension = ".tson"
+
+
+[[source_code]]
+file = "appsec_index.tson"
+path = ".github/agents/assets/appsec_index.tson"
+extension = ".tson"
+
+
+[[infrastructure_and_config]]
+file = "sync_agents.sh"
+path = ".github/hooks/scripts/sync_agents.sh"
+extension = ".sh"
+
+
+[[infrastructure_and_config]]
+file = "generate_skill_registry.py"
+path = ".github/hooks/scripts/generate_skill_registry.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "discovery.py"
+path = ".github/hooks/scripts/discovery.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "blueprint.py"
+path = ".github/hooks/scripts/blueprint.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "commit_memory.py"
+path = ".github/hooks/scripts/commit_memory.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "generate_copilot_runtime.py"
+path = ".github/hooks/scripts/generate_copilot_runtime.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "upgrade.sh"
+path = ".github/hooks/scripts/upgrade.sh"
+extension = ".sh"
+
+
+[[infrastructure_and_config]]
+file = "generate_repo_index.py"
+path = ".github/hooks/scripts/generate_repo_index.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "tson_utils.py"
+path = ".github/hooks/scripts/tson_utils.py"
+extension = ".py"
+
+
+[[infrastructure_and_config]]
+file = "generate_atlas.py"
+path = ".github/hooks/scripts/generate_atlas.py"
+extension = ".py"

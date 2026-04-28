@@ -1,8 +1,0 @@
-data_validation = []
-security_and_auth = []
-dependencies = []
-
-[_meta]
-role = "appsec"
-description = "File index for appsec. Use these paths for navigation."
-last_updated = "2026-04-28T16:50:20.060901+00:00"

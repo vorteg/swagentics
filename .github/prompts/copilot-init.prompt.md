@@ -33,9 +33,10 @@ description: Framework Initialization & Repository Onboarding — @bootstrap, in
 
 <discovery_protocol>
   1. **Source Code Audit:** Scan root and `src/`, `app/`, `packages/` for dependency files (e.g., `package.json`, `pyproject.toml`, `go.mod`, `pom.xml`).
-  2. **Documentation Scan:** Read `README.md` and any existing files in `docs/` to extract business logic and architectural intent.
-  3. **Infrastructure Check:** Identify database engines, cloud providers, and CI/CD tools from files like `docker-compose.yml`, `Dockerfile`, `.github/workflows/`.
-  4. **Runtime Detection:** 
+  2. **Empty Project Handling:** If the repository is empty or contains no source code, **STOP**. Inform the user: *"I see this is a new project. To initialize Swagentics, please tell me your intended stack, architecture, and primary programming language."*
+  3. **Documentation Scan:** Read `README.md` and any existing files in `docs/` to extract business logic and architectural intent.
+  4. **Infrastructure Check:** Identify database engines, cloud providers, and CI/CD tools from files like `docker-compose.yml`, `Dockerfile`, `.github/workflows/`.
+  5. **Runtime Detection:** 
      - Check for `uv.lock` → set `python_runner = "uv run"`, `package_manager = "uv"`
      - Else, check for `python3` presence → set `python_runner = "python3"`, `package_manager = "pip"`
 </discovery_protocol>

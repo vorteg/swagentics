@@ -1,6 +1,0 @@
-directories = [".github", ".github/agents", ".github/agents/assets", ".github/hooks", ".github/hooks/scripts", ".github/instructions", ".github/memory", ".github/memory/schemas", ".github/memory/templates", ".github/prompts", ".github/skills", ".github/skills/architecture-patterns", ".github/skills/context-handoff", ".github/skills/system-audit", ".github/workflows", "docs"]
-
-[_meta]
-description = "Project Atlas. Shows the high-level directory structure. For specific files, use your role's indexes or the discovery script."
-last_updated = "2026-04-28T16:50:19.973127+00:00"
-max_depth = 3

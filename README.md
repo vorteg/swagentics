@@ -18,6 +18,15 @@
 
 ---
 
+## 📋 Requirements
+
+To use the full multi-agent orchestration capabilities (Mode 1), you need:
+- **VS Code:** `v1.93.0` or higher.
+- **GitHub Copilot Chat:** `v0.45.0` or higher.
+- **Subagent Support:** Ensure "Multi-agent orchestration" is enabled in your Copilot settings (usually active by default in recent versions).
+- **Python:** `v3.10+` (or `uv` package manager).
+- **MCP Servers:** `context7` and `searxng` (highly recommended to prevent hallucinations).
+
 ## 📦 Installation
 
 1. **Clone/Copy:** Add the `.github/` folder to your repository.

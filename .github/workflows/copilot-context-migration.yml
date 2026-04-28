@@ -42,7 +42,7 @@ jobs:
           for agent_file in .github/agents/*.agent.md; do
             role_name=$(basename "$agent_file" .agent.md)
             echo "🔍 Generando mapa de repositorio para: $role_name"
-            node .github/hooks/scripts/generate_repo_index.mjs --role "$role_name"
+            python3 .github/hooks/scripts/generate_repo_index.py --role "$role_name"
           done
 
       - name: 🧠 2. Generar Registro Dinámico de Skills

@@ -40,6 +40,19 @@ description: Framework Initialization & Repository Onboarding — @bootstrap, in
      - Else, check for `python3` presence → set `python_runner = "python3"`, `package_manager = "pip"`
 </discovery_protocol>
 
+<external_resources_protocol>
+  **Proactive Resource Suggestions:**
+  During analysis, check if the project could benefit from specialized agents, skills, or prompts not present in the Swagentics core. 
+  
+  You MUST suggest browsing or pulling resources from:
+  `https://github.com/github/awesome-copilot`
+  
+  **How to guide the user:**
+  1. Identify gaps (e.g., "You have a complex Rust setup; you might want to add a Rust-specialist agent").
+  2. Point to the specific category in the `awesome-copilot` repository.
+  3. Remind them that Swagentics is compatible with these community resources—they just need to ensure files follow the `.agent.md` or `SKILL.md` naming conventions and run `sync_agents.sh`.
+</external_resources_protocol>
+
 <generation_rules>
   **Instructions vs Skills — choose the right primitive:**
   - **Instruction** (`.github/instructions/*.instructions.md`): Rules that apply ALWAYS when touching certain files. Use `applyTo` glob pattern.
@@ -82,6 +95,6 @@ For every file identified, you must output:
 1. **Verify MCP Health** following the `<mcp_health_check>`.
 2. **Analyze** the repository following the `<discovery_protocol>`.
 3. **Detect & Persist Runtime** in `.github/.copilot-dev.tson`.
-4. **Identify** the core stack and suggest stack-specific coder agents.
-5. **Generate** foundational instructions and skills using `<generation_rules>`.
+4. **External Resources:** Suggest relevant agents/skills from `github/awesome-copilot` based on detected gaps.
+5. **Generate:** Create project-specific instructions and skills using `<generation_rules>`.
 6. **Final Command:** Instruct the user to run `bash .github/hooks/scripts/sync_agents.sh`.

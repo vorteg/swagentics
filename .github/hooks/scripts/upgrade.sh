@@ -63,19 +63,24 @@ trap 'rm -rf "$TMPDIR"' EXIT
 
 DOWNLOAD_OK=false
 
-# Strategy 1: gh CLI (works with private repos, auto-authenticated)
-if command -v gh &>/dev/null; then
-  echo -e "${CYAN}📥 Downloading ${VERSION} via gh CLI...${NC}"
-  if gh api "repos/${REPO}/tarball/${VERSION}" > "${TMPDIR}/archive.tar.gz" 2>/dev/null; then
-    DOWNLOAD_OK=true
-  else
-    echo -e "${DIM}   gh CLI failed, trying alternatives...${NC}"
-  fi
+# Strategy 1: curl without auth (Public repo priority)
+TARBALL_URL="https://github.com/${REPO}/archive/refs/tags/${VERSION}.tar.gz"
+
+# If not a tag (e.g., "main"), use the branch URL
+if [[ "$VERSION" == "main" || "$VERSION" == "dev" || ! "$VERSION" =~ ^v ]]; then
+  TARBALL_URL="https://github.com/${REPO}/archive/refs/heads/${VERSION}.tar.gz"
 fi
 
-# Strategy 2: curl with GITHUB_TOKEN (private repos without gh CLI)
+echo -e "${CYAN}📥 Downloading ${VERSION} from ${REPO}...${NC}"
+HTTP_CODE=$(curl -sL -w "%{http_code}" -o "${TMPDIR}/archive.tar.gz" "$TARBALL_URL")
+
+if [ "$HTTP_CODE" = "200" ]; then
+  DOWNLOAD_OK=true
+fi
+
+# Strategy 2: curl with GITHUB_TOKEN (Fallback for rate limits or private clones)
 if [ "$DOWNLOAD_OK" = false ] && [ -n "${GITHUB_TOKEN:-}" ]; then
-  echo -e "${CYAN}📥 Downloading ${VERSION} with GITHUB_TOKEN...${NC}"
+  echo -e "${DIM}   Public download failed, trying with GITHUB_TOKEN...${NC}"
   HTTP_CODE=$(curl -sL -w "%{http_code}" \
     -H "Authorization: token ${GITHUB_TOKEN}" \
     -H "Accept: application/vnd.github+json" \
@@ -84,24 +89,13 @@ if [ "$DOWNLOAD_OK" = false ] && [ -n "${GITHUB_TOKEN:-}" ]; then
 
   if [ "$HTTP_CODE" = "200" ]; then
     DOWNLOAD_OK=true
-  else
-    echo -e "${DIM}   GITHUB_TOKEN failed (HTTP ${HTTP_CODE}), trying without auth...${NC}"
   fi
 fi
 
-# Strategy 3: curl without auth (public repos only)
-if [ "$DOWNLOAD_OK" = false ]; then
-  TARBALL_URL="https://github.com/${REPO}/archive/refs/tags/${VERSION}.tar.gz"
-
-  # If not a tag (e.g., "main"), use the branch URL
-  if [[ "$VERSION" == "main" || "$VERSION" == "dev" || ! "$VERSION" =~ ^v ]]; then
-    TARBALL_URL="https://github.com/${REPO}/archive/refs/heads/${VERSION}.tar.gz"
-  fi
-
-  echo -e "${CYAN}📥 Downloading ${VERSION} (public)...${NC}"
-  HTTP_CODE=$(curl -sL -w "%{http_code}" -o "${TMPDIR}/archive.tar.gz" "$TARBALL_URL")
-
-  if [ "$HTTP_CODE" = "200" ]; then
+# Strategy 3: gh CLI (Final fallback)
+if [ "$DOWNLOAD_OK" = false ] && command -v gh &>/dev/null; then
+  echo -e "${DIM}   Trying via gh CLI...${NC}"
+  if gh api "repos/${REPO}/tarball/${VERSION}" > "${TMPDIR}/archive.tar.gz" 2>/dev/null; then
     DOWNLOAD_OK=true
   fi
 fi

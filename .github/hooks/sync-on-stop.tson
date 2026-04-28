@@ -1,8 +1,0 @@
-[hooks]
-[[hooks.Stop]]
-type = "command"
-command = "uv run .github/hooks/scripts/commit_memory.py"
-linux = "uv run .github/hooks/scripts/commit_memory.py"
-osx = "uv run .github/hooks/scripts/commit_memory.py"
-windows = "uv run .github/hooks/scripts/commit_memory.py"
-timeout = 30

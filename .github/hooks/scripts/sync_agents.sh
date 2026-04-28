@@ -5,6 +5,13 @@ set -e
 
 echo "🚀 Starting Swagentics framework synchronization..."
 
+# ── Change detection ──────────────────────────────────────────────────────────
+# We only sync if there are changes in the repo, ignoring framework memory/assets
+if git diff --quiet HEAD -- . ':!.github/memory' ':!.github/agents/assets' ':!.github/memory/activity_log.md' ':!activity_log.md'; then
+  echo "✅ No relevant changes detected in the repository. Skipping synchronization."
+  exit 0
+fi
+
 # ── Runtime detection ─────────────────────────────────────────────────────────
 if command -v uv &>/dev/null; then
   RUNNER="uv run"

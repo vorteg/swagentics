@@ -37,26 +37,18 @@ for agent_file in .github/agents/*.agent.md; do
   $RUNNER .github/hooks/scripts/generate_repo_index.py --role "$role_name"
 done
 
-# 3. Skill Registry
-echo "🧠 Generating Skill indexes..."
-$RUNNER .github/hooks/scripts/generate_skill_registry.py
-
-# 4. Copilot Runtime
-echo "🖥️ Updating Copilot runtime..."
-$RUNNER .github/hooks/scripts/generate_copilot_runtime.py || echo "⚠️ Copilot Chat extension not found — skipping."
-
-echo "✅ Synchronization complete! .tson files updated in .github/agents/assets/"
+echo "✅ Deterministic synchronization complete! .tson index files updated."
 
 # ── VALIDATION PHASE ──────────────────────────────────────────────────────────
 echo ""
 echo "🔍 Validating framework integrity..."
 
-# 1. Clean orphaned TSONs for agents that no longer exist
-for tson in .github/agents/assets/*_index.tson .github/agents/assets/*_skills.tson; do
+# 1. Clean orphaned TSONs
+for tson in .github/agents/assets/*_index.tson; do
   if [ -f "$tson" ]; then
-    agent_name=$(basename "$tson" | sed 's/_\(index\|skills\).tson//')
-    if [ ! -f ".github/agents/${agent_name}.agent.md" ]; then
-      echo "  🧹 Removing orphaned asset: $(basename "$tson")"
+    agent_name=$(basename "$tson" | sed 's/_index.tson//')
+    if [ ! -f ".antigravity/workflows/${agent_name}-worker.md" ]; then
+      echo "  🧹 Removing orphaned index asset: $(basename "$tson")"
       rm -f "$tson"
     fi
   fi
@@ -64,18 +56,7 @@ done
 
 ERRORS=0
 
-# Check that all skill paths in *_skills.tson actually exist
-for tson in .github/agents/assets/*_skills.tson; do
-  if [ -f "$tson" ]; then
-    paths=$(grep -oP '"path"\s*:\s*"\K[^"]+' "$tson" 2>/dev/null || true)
-    for skill_path in $paths; do
-      if [ ! -d "$skill_path" ]; then
-        echo "❌ BROKEN PATH in $(basename "$tson"): $skill_path does not exist"
-        ERRORS=$((ERRORS + 1))
-      fi
-    done
-  fi
-done
+
 
 if [ $ERRORS -gt 0 ]; then
   echo ""
